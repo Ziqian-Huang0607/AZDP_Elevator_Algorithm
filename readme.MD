@@ -32,64 +32,76 @@ The AZDP simulation models the following components:
 
 ---
 
-### 3. Algorithms  
+To ensure proper rendering of mathematical equations in your GitHub Markdown README, replace \[...\] with $$...$$ and remove indentation from the equations. Here's the corrected version:
+markdownCopy
+# AZDP Elevator Control System: A Simulation Framework for Adaptive Zoning and Dynamic Prioritization
 
-#### 3.1 Traffic Simulation  
-Passenger requests are generated using a **probabilistic model** with factors:  
-- **Time-of-Day Profiles**: Morning, lunch, afternoon, evening, and off-peak hours.  
-- **Floor Type**: Implicit classification based on a fixed probability distribution.  
-**Example**: During morning peak, higher probability for requests from lower floors (e.g., apartments → offices).  
+[![Python 3.6+](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
+[![NumPy](https://img.shields.io/badge/numpy-%5E1.20-green)](https://numpy.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-%5E0.24-orange)](https://scikit-learn.org/)
+[![matplotlib](https://img.shields.io/badge/matplotlib-%5E3.4-purple)](https://matplotlib.org/)
+[![Numba](https://img.shields.io/badge/numba-%5E0.53-yellow)](https://numba.pydata.org/)
+[![Tkinter](https://img.shields.io/badge/tkinter--blue)](https://docs.python.org/3/library/tkinter.html)
 
-#### 3.2 Dynamic Zoning  
-Dynamic elevator zones are determined using **K-Means clustering** on historical request data:  
-1. **Data Collection**: Origin-destination pairs from recent requests.  
-2. **Feature Extraction**: Requests as 2D points (`x = origin_floor`, `y = destination_floor`).  
-3. **Clustering**: K-Means with `NUM_ELEVATORS` clusters.  
-4. **Zone Assignment**: Elevators assigned to cluster centroids.  
-**Update Interval**: Configurable (`ZONING_UPDATE_INTERVAL`).  
+---
 
-**Euclidean Distance Formula**:  
-\[
-d = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}
-\]  
-where \((x_1, y_1)\) and \((x_2, y_2)\) are elevator and floor coordinates, respectively.  
+## Abstract
+This document outlines a **Tkinter-based simulation framework** for an **Adaptive Zoning and Dynamic Prioritization (AZDP)** elevator control system for high-rise, mixed-use buildings. The system uses **Enhanced Numerical Performance (ENP)** techniques for traffic optimization, dynamic zoning, and prioritization.
 
-#### 3.3 Prioritization  
-Each request's priority score (\(P\)) is a **weighted sum** of factors:  
-\[
+---
+
+## 3. Algorithms
+
+### 3.1 Traffic Simulation
+Passenger requests are generated probabilistically using time-of-day (rush hour, lunch, etc.) and floor type (apartment vs. office).
+
+### 3.2 Dynamic Zoning
+Dynamic elevator zones are determined via **K-Means clustering**:
+1. **Data Collection**: Historical request data (origin/destination floors) is collected.
+2. **Feature Extraction**: Requests are represented as points in 2D space (origin and destination).
+3. **Clustering**: Cluster data into `NUM_ELEVATORS` zones using K-Means.
+4. **Zone Assignment**: Elevators are assigned to centroids of clusters.
+5. **Periodic Update**: Zones update every `ZONING_UPDATE_INTERVAL` seconds.
+
+### 3.3 Prioritization
+Each request's priority score ($P$) is a weighted sum of factors:
+$$
 P = w_t \cdot t + \frac{w_d}{d + 1} + w_c \cdot C + w_{dir} \cdot D + w_{vip} \cdot V
-\]  
-where:  
-- \(w_t\), \(w_d\), \(w_c\), \(w_{dir}\), \(w_{vip}\): Weights for waiting time, distance, capacity, direction, and VIP status.  
-- \(t\): Waiting time.  
-- \(d\): Distance to the closest elevator.  
-- \(C\): Capacity factor (1 if not full, 0.5 if full).  
-- \(D\): Direction factor (1.2 if matching, else 1).  
-- \(V\): VIP status (1 if VIP, else 0).  
+$$
+where:
+- $w_t, w_d, w_c, w_{dir}, w_{vip}$: Weights for waiting time, distance, capacity, direction, and VIP status.
+- $t$: Waiting time (seconds).
+- $d$: Distance to closest elevator (floors).
+- $C$: Capacity factor (1 if not full, 0.5 if full).
+- $D$: Direction factor (1.2 if elevator matches passenger direction, else 1).
+- $V$: VIP status (1 if true).
 
-**ENP Distance Calculation**:  
-\[
+The distance formula is:
+$$
 d = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}
-\]  
-(Implemented with `numba` for performance.)  
+$$
 
-#### 3.4 Dispatching  
-Request assignment to elevators follows:  
-1. Calculate priority scores for each available elevator.  
-2. Prefer elevators in the same zone.  
-3. Select the elevator with the highest priority score.  
+### 3.4 Dispatching
+Requests are assigned elevators using priority scores, preferring same-zone elevators.
 
 ---
 
-### 4. ENP Techniques  
-The simulation leverages **Numba JIT compilation** for performance-critical code (e.g., priority calculation) and **data locality optimizations**.  
+## 4. Usage
+- Clone the repository:
+  ```bash
+  git clone [repository URL]
+  cd AZDP_Elevator_Algorithm
+Install dependencies:
 
----
+` pip install numpy scikit-learn matplotlib numba tkinter `
+Configure parameters in Simulated_Building_Algorithm.py (e.g., NUM_FLOORS, ENP_weights).
 
-### 5. Usage  
-1. Install dependencies:  
-   ```bash
-   git clone [repository URL]
-   cd AZDP_Elevator_Algorithm
-   pip install numpy scikit-learn matplotlib numba tkinter
-   python Simulated_Building_Algorithm.py
+Run the simulation:
+` python Simulated_Building_Algorithm.py `
+
+6. Real-World Considerations
+Robustness: Handle outages and failures.
+Hardware Integration: Implement on microcontrollers with low-level code.
+Certification: Comply with safety regulations.
+Security: Secure control interfaces.
+Copy
