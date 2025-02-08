@@ -32,24 +32,6 @@ The AZDP simulation models the following components:
 
 ---
 
-To ensure proper rendering of mathematical equations in your GitHub Markdown README, replace \[...\] with $$...$$ and remove indentation from the equations. Here's the corrected version:
-markdownCopy
-# AZDP Elevator Control System: A Simulation Framework for Adaptive Zoning and Dynamic Prioritization
-
-[![Python 3.6+](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
-[![NumPy](https://img.shields.io/badge/numpy-%5E1.20-green)](https://numpy.org/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-%5E0.24-orange)](https://scikit-learn.org/)
-[![matplotlib](https://img.shields.io/badge/matplotlib-%5E3.4-purple)](https://matplotlib.org/)
-[![Numba](https://img.shields.io/badge/numba-%5E0.53-yellow)](https://numba.pydata.org/)
-[![Tkinter](https://img.shields.io/badge/tkinter--blue)](https://docs.python.org/3/library/tkinter.html)
-
----
-
-## Abstract
-This document outlines a **Tkinter-based simulation framework** for an **Adaptive Zoning and Dynamic Prioritization (AZDP)** elevator control system for high-rise, mixed-use buildings. The system uses **Enhanced Numerical Performance (ENP)** techniques for traffic optimization, dynamic zoning, and prioritization.
-
----
-
 ## 3. Algorithms
 
 ### 3.1 Traffic Simulation
