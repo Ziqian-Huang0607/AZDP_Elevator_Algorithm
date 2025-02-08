@@ -89,7 +89,7 @@ Requests are assigned elevators using priority scores, preferring same-zone elev
 ## 4. Usage
 - Clone the repository:
   ```bash
-  git clone [repository URL]
+  git clone https://github.com/Ziqian-Huang0607/AZDP_Elevator_Algorithm
   cd AZDP_Elevator_Algorithm
 Install dependencies:
 
