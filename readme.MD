@@ -47,9 +47,7 @@ Dynamic elevator zones are determined via **K-Means clustering**:
 
 ### 3.3 Prioritization
 Each request's priority score ($P$) is a weighted sum of factors:
-$
-P = w_t \cdot t + \frac{w_d}{d + 1} + w_c \cdot C + w_{dir} \cdot D + w_{vip} \cdot V
-$
+$P = w_t \cdot t + \frac{w_d}{d + 1} + w_c \cdot C + w_{dir} \cdot D + w_{vip} \cdot V$
 where:
 - $w_t, w_d, w_c, w_{dir}, w_{vip}$: Weights for waiting time, distance, capacity, direction, and VIP status.
 - $t$: Waiting time (seconds).
@@ -59,9 +57,7 @@ where:
 - $V$: VIP status (1 if true).
 
 The distance formula is:
-$
-d = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}
-$
+$d = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$
 
 ### 3.4 Dispatching
 Requests are assigned elevators using priority scores, preferring same-zone elevators.
