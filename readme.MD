@@ -6,7 +6,7 @@
 [![matplotlib](https://img.shields.io/badge/matplotlib-%5E3.4-purple)](https://matplotlib.org/)
 [![Numba](https://img.shields.io/badge/numba-%5E0.53-yellow)](https://numba.pydata.org/)
 [![Tkinter](https://img.shields.io/badge/tkinter--blue)](https://docs.python.org/3/library/tkinter.html)
-
+[![DOI](https://zenodo.org/badge/929426040.svg)](https://doi.org/10.5281/zenodo.14838443)
 ---
 
 ### Abstract  
